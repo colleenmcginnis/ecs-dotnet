@@ -13,7 +13,7 @@ Add a reference to the `Elastic.Serilog.Sinks` package:
 <PackageReference Include="Elastic.Serilog.Sinks" Version="{ecs-logging-dotnet-version}" />
 ----
 
-==== Usage 
+==== Usage
 
 There's a few ways that you can extend a `Serilog` `LoggerConfiguration`:
 
@@ -25,7 +25,7 @@ Log.Logger = new LoggerConfiguration()
 
 ----
 
-*NOTE:* Don't forget we also publish an https://github.com/elastic/ecs-dotnet/blob/main/src/Elastic.Apm.SerilogEnricher/readme.md[`Elastic.Apm.SerilogEnricher`] for the Elastic APM Agent!
+*NOTE:* Don't forget we also publish an {ecs-dotnet-blob}/src/Elastic.Apm.SerilogEnricher/README.md[`Elastic.Apm.SerilogEnricher`] for the Elastic APM Agent!
 
 Writing to `Elasticsearch`
 
@@ -37,9 +37,9 @@ Writing to `Elasticsearch`
 	opts.BootstrapMethod = BootstrapMethod.Failure;
 	opts.ConfigureChannel = channelOpts =>
 	{
-		channelOpts.BufferOptions = new BufferOptions 
-		{ 
-			ConcurrentConsumers = 10 
+		channelOpts.BufferOptions = new BufferOptions
+		{
+			ConcurrentConsumers = 10
 		};
 	};
 }, transport =>
@@ -63,12 +63,12 @@ Writing to `Elastic Cloud`:
 ==== Configuration
 
 |===
-|Option |Description 
+|Option |Description
 
-|`Transport` |An instance of `Elastic.Transport` that dictates where and how we are communicating to. Defaults to `http://localhost:9200` 
-|`DataStream` |Where to write data, defaults to the `logs-dotnet-default` datastream. 
-|`BootstrapMethod` |Wheter the sink should attempt to install component and index templates to ensure the datastream has ECS mappings. Can be be either `None` (the default), `Silent` (attempt but fail silently), `Failure` (attempt and fail with exceptions if bootstrapping fails). 
-|`TextFormatting` |Allows explicit control of over the `EcsTextFormatterConfiguration` used to emit ECS json documents. See https://github.com/elastic/ecs-dotnet/tree/main/src/Elastic.CommonSchema.Serilog[`Elastic.CommonSchema.Serilog`] for available options. 
+|`Transport` |An instance of `Elastic.Transport` that dictates where and how we are communicating to. Defaults to `http://localhost:9200`
+|`DataStream` |Where to write data, defaults to the `logs-dotnet-default` datastream.
+|`BootstrapMethod` |Wheter the sink should attempt to install component and index templates to ensure the datastream has ECS mappings. Can be be either `None` (the default), `Silent` (attempt but fail silently), `Failure` (attempt and fail with exceptions if bootstrapping fails).
+|`TextFormatting` |Allows explicit control of over the `EcsTextFormatterConfiguration` used to emit ECS json documents. See {ecs-dotnet-blob}/src/Elastic.CommonSchema.Serilog[`Elastic.CommonSchema.Serilog`] for available options.
 |`ConfigureChannel` |A callback receiving the `DatastreamChannelOptions` which allows you to control sizing, backpressure etc. See https://github.com/elastic/elastic-ingest-dotnet/blob/main/src/Elastic.Ingest.Elasticsearch/README.md#elasticingestelasticsearch[`Elastic.Ingest.Elasticsearch`] for more information.
 |===
 
@@ -154,4 +154,4 @@ In case of issues, you can enable the [Serilog Self-Log feature](https://github.
 * If you need higher guarantees on log delivery use https://github.com/serilog/serilog-sinks-file[`Serilog.Sinks.File`] with our https://www.nuget.org/packages/Elastic.CommonSchema.Serilog/[ECS log formatter] for Serilog and use https://www.elastic.co/beats/filebeat[filebeat] to ship these logs.
 * Check out {fleet-guide}/fleet-overview.html[Elastic Agent and Fleet] to simplify collecting logs and metrics on the edge.
 
-If you miss a particular feature from `Serilog.Sinks.Elasticsearch` in `Elastic.Serilog.Sinks` please open a https://github.com/elastic/ecs-dotnet/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=%5BFEATURE%5D[feature request]! We'd love to grow this sink organically moving forward.
+If you miss a particular feature from `Serilog.Sinks.Elasticsearch` in `Elastic.Serilog.Sinks` please open a {ecs-dotnet-repo}/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=%5BFEATURE%5D[feature request]! We'd love to grow this sink organically moving forward.

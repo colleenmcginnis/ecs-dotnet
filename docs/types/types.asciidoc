@@ -18,7 +18,7 @@ Add a reference to the Elastic.CommonSchema package:
 <PackageReference Include="Elastic.CommonSchema" Version="{ecs-logging-dotnet-version}" />
 ----
 
-TIP: Use https://github.com/elastic/ecs-dotnet/tree/main/src/Elastic.Ingest.Elasticsearch.CommonSchema[Elastic.Ingest.Elasticsearch.CommonSchema] to easily persist ECS documents to Elasticsearch or Elastic Cloud.
+TIP: Use {ecs-dotnet-blob}/src/Elastic.Ingest.Elasticsearch.CommonSchema[Elastic.Ingest.Elasticsearch.CommonSchema] to easily persist ECS documents to Elasticsearch or Elastic Cloud.
 
 
 [float]
@@ -27,7 +27,7 @@ TIP: Use https://github.com/elastic/ecs-dotnet/tree/main/src/Elastic.Ingest.Elas
 The version of the Elastic.CommonSchema package matches the published ECS version, with the same corresponding branch names:
 
 * Nested Schema (The C# types are generated from this YAML file): https://github.com/elastic/ecs/blob/v1.4.0/generated/ecs/ecs_nested.yml
-* .NET types: https://github.com/elastic/ecs-dotnet/tree/v1.4.0
+* .NET types: https://github.com/elastic/ecs-dotnet/tree/1.4.0
 
 The version numbers of the NuGet package must match the exact version of ECS used within Elasticsearch. Attempting to use mismatched versions, for example a NuGet package with version 1.2.0 against an Elasticsearch index configured to use an ECS template with version 1.1.0, will result in indexing and data problems.
 
@@ -44,7 +44,7 @@ var doc = EcsDocument.CreateNewWithDefaults<EcsDocument>();
 
 This will automatically assign most common ECS fields that can be inferred from the running process.
 
-However there is no requirement to do so,  simply creating a new `EcsDocument` instance directly 
+However there is no requirement to do so,  simply creating a new `EcsDocument` instance directly
 is completely valid and supported.
 
 [source,csharp]
@@ -114,7 +114,7 @@ var ecsDocument = new EcsDocument
 [float]
 === Dynamically assign ECS fields
 
-Additionally, ECS fields can be dynamically assigned through 
+Additionally, ECS fields can be dynamically assigned through
 
 [source,csharp]
 ----
@@ -180,4 +180,4 @@ public class MyEcsDocument : EcsDocument
 }
 ----
 
-The Elastic.CommonSchema.BenchmarkDotNetExporter project takes this approach in the https://github.com/elastic/ecs-dotnet/tree/main/src/Elastic.CommonSchema.BenchmarkDotNetExporter[Domain source directory], where the BenchmarkDocument subclasses EcsDocument.
+The Elastic.CommonSchema.BenchmarkDotNetExporter project takes this approach in the {ecs-dotnet-blob}/src/Elastic.CommonSchema.BenchmarkDotNetExporter[Domain source directory], where the BenchmarkDocument subclasses EcsDocument.
